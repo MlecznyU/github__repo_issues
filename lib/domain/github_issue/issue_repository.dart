@@ -3,7 +3,8 @@ import 'package:tech_challenge_flutter/domain/utils.dart';
 
 abstract class IssueRepository {
   Future<List<IssueModel>> getIssues({
-    String issueName,
+    // owner/repoName
+    String repositoryFullName,
     SortType sortType = SortType.created,
     SortDirection sortDirection = SortDirection.asc,
     // Results per page
