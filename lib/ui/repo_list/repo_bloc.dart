@@ -29,4 +29,6 @@ class RepoState with _$RepoState {
 
 class RepoBloc extends Cubit<RepoState> {
   RepoBloc() : super(const RepoState.initial());
+
+  Future<void> getRepositories({required String name}) async {}
 }
