@@ -11,4 +11,6 @@ abstract class RepoRepository {
     // Page number of the results
     int page = 1,
   });
+
+  Future<int> getNumberOfPagesForGivenRepoName({String name, int resultsPerPage = 10});
 }

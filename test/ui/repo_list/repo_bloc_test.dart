@@ -1,14 +1,25 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/repo_bloc.dart';
 
-void main() {
-  RepoBloc _build() => RepoBloc();
+import '../../mocks.mocks.dart';
 
-  test('init state = RepoState.initial', () {
+late MockRepoRepository _repoRepository;
+
+void main() {
+  const initialState = RepoState(stateType: StateType.initial, repoName: '', repoList: []);
+
+  RepoBloc _build() => RepoBloc(_repoRepository);
+
+  setUp(() {
+    _repoRepository = MockRepoRepository();
+  });
+
+  test('init state = StateType.initial', () {
     final bloc = _build();
 
-    expect(bloc.state, const RepoState.initial());
+    expect(bloc.state.stateType, StateType.initial);
   });
 
   blocTest<RepoBloc, RepoState>(
@@ -28,10 +39,26 @@ void main() {
     'on getRepositories called when repoName string is longer then 4 chars and error thrown',
     build: _build,
     expect: () => [
-      const RepoState.loading(repoName: '1234'),
-      const RepoState.error(errorMessage: 'errorMessage'),
+      initialState.copyWith(repoName: '1234', stateType: StateType.loading),
+      initialState.copyWith(repoName: '1234', stateType: StateType.error),
     ],
     act: (bloc) async {
+      when(_repoRepository.getRepositories(remoName: '1234')).thenAnswer((_) => Future.error(Error()));
+      await bloc.getRepositories(name: '1234');
+    },
+  );
+
+  blocTest<RepoBloc, RepoState>(
+    'bloc emits loading state and than loaded state with empty list '
+    'on getRepositories called when repoName string is longer then 4 chars and returned list is empty',
+    build: _build,
+    expect: () => [
+      initialState.copyWith(repoName: '1234', stateType: StateType.loading),
+      initialState.copyWith(repoName: '1234', stateType: StateType.loaded),
+    ],
+    act: (bloc) async {
+      when(_repoRepository.getRepositories(remoName: '1234')).thenAnswer((_) => Future.value([]));
+      when(_repoRepository.getNumberOfPagesForGivenRepoName(name: '1234')).thenAnswer((_) => Future.value(1));
       await bloc.getRepositories(name: '1234');
     },
   );

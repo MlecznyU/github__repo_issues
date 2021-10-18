@@ -1,41 +1,41 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart';
+import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart';
 
 part 'repo_bloc.freezed.dart';
 
+enum StateType { initial, loading, loaded, error }
+
 @freezed
 class RepoState with _$RepoState {
-  const factory RepoState.initial({
-    String? repoName,
-  }) = _Initial;
-
-  const factory RepoState.loading({
-    required String repoName,
-  }) = _Loading;
-
-  const factory RepoState.loaded({
+  const factory RepoState({
     required String repoName,
     required List<RepoModel> repoList,
-    required int currentPage,
-    required int numberOfPages,
-  }) = _Loaded;
-
-  const factory RepoState.error({
-    String? repoName,
-    required String errorMessage,
-  }) = _Error;
+    required StateType stateType,
+    @Default(1) int currentPage,
+    @Default(1) int numberOfPages,
+  }) = _RepoState;
 }
 
 class RepoBloc extends Cubit<RepoState> {
-  RepoBloc() : super(const RepoState.initial());
+  RepoBloc(this.repoRepository) : super(const RepoState(stateType: StateType.initial, repoName: '', repoList: []));
 
-  Future<void> getRepositories({required String name}) async {
+  final RepoRepository repoRepository;
+
+  Future<void> getRepositories({required String name, int pageNumber = 1}) async {
     if (name.length < 4) return;
-    emit(RepoState.loading(repoName: name));
+    emit(state.copyWith(stateType: StateType.loading, repoName: name));
 
-    await Future.delayed(const Duration(seconds: 1), () {
-      emit(const RepoState.error(errorMessage: 'errorMessage'));
-    });
+    try {
+      final numberOfPages = await repoRepository.getNumberOfPagesForGivenRepoName(name: name);
+      final repoList = await repoRepository.getRepositories(remoName: name, page: pageNumber);
+
+      emit(
+        state.copyWith(stateType: StateType.loaded, repoList: repoList, numberOfPages: numberOfPages),
+      );
+    } catch (e) {
+      emit(state.copyWith(stateType: StateType.error));
+    }
   }
 }
