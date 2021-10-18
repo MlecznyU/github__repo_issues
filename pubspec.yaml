@@ -33,6 +33,7 @@ dependencies:
   freezed_annotation: ^0.15.0
 
 dev_dependencies:
+  build_runner:
   flutter_test:
     sdk: flutter
   freezed: ^0.15.0+1
