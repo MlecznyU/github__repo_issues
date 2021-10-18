@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchRepoPage extends StatelessWidget {
-  const SearchRepoPage({Key? key}) : super(key: key);
+class RepoListPage extends StatelessWidget {
+  const RepoListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

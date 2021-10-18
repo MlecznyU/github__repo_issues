@@ -30,14 +30,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_bloc: ^7.3.1
   freezed_annotation: ^0.15.0
+  rxdart: ^0.27.2
 
 dev_dependencies:
+  bloc_test: ^8.3.0
   build_runner:
   flutter_test:
     sdk: flutter
   freezed: ^0.15.0+1
   lint: ^1.7.2
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
