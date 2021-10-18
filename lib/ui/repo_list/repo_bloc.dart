@@ -30,5 +30,12 @@ class RepoState with _$RepoState {
 class RepoBloc extends Cubit<RepoState> {
   RepoBloc() : super(const RepoState.initial());
 
-  Future<void> getRepositories({required String name}) async {}
+  Future<void> getRepositories({required String name}) async {
+    if (name.length < 4) return;
+    emit(RepoState.loading(repoName: name));
+
+    await Future.delayed(const Duration(seconds: 1), () {
+      emit(const RepoState.error(errorMessage: 'errorMessage'));
+    });
+  }
 }

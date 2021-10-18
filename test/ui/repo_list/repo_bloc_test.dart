@@ -14,8 +14,6 @@ void main() {
   blocTest<RepoBloc, RepoState>(
     'bloc emits nothing on getRepositories called when repoName string is shorter then 4 chars',
     build: _build,
-    // ignore initial state
-    skip: 1,
     expect: () => [],
     act: (bloc) async {
       await bloc.getRepositories(name: '');
@@ -26,12 +24,13 @@ void main() {
   );
 
   blocTest<RepoBloc, RepoState>(
-    'bloc emits loading state and than another one (for example loading or error) '
-    'on getRepositories called when repoName string is longer then 4 chars',
+    'bloc emits loading state and than error state '
+    'on getRepositories called when repoName string is longer then 4 chars and error thrown',
     build: _build,
-    // ignore initial state
-    skip: 1,
-    expect: () => [const RepoState.loading(repoName: '1234'), RepoState],
+    expect: () => [
+      const RepoState.loading(repoName: '1234'),
+      const RepoState.error(errorMessage: 'errorMessage'),
+    ],
     act: (bloc) async {
       await bloc.getRepositories(name: '1234');
     },
