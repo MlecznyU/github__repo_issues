@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart';
 
@@ -20,7 +19,6 @@ class RepoState with _$RepoState {
   }) = _RepoState;
 }
 
-@injectable
 class RepoBloc extends Cubit<RepoState> {
   RepoBloc(this.repoRepository)
       : super(
