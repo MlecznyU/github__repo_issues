@@ -13,3 +13,5 @@ analyzer:
     missing_required_param: error
     must_be_immutable: error
     parameter_assignments: error
+    # https://github.com/rrousselGit/freezed/issues/527
+    invalid_annotation_target: ignore
