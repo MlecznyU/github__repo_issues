@@ -39,8 +39,8 @@ class RepoBloc extends Cubit<RepoState> {
     emit(state.copyWith(stateType: StateType.loading, repoName: name));
 
     try {
-      final numberOfPages = await repoRepository.getNumberOfPagesForGivenRepoName(name: name);
       final repoList = await repoRepository.getRepositories(ownerName: ownerName, remoName: name, page: pageNumber);
+      final numberOfPages = repoRepository.getNumberOfPages();
 
       emit(
         state.copyWith(stateType: StateType.loaded, repoList: repoList, numberOfPages: numberOfPages),

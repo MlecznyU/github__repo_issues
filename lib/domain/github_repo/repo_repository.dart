@@ -13,5 +13,7 @@ abstract class RepoRepository {
     int page = 1,
   });
 
-  Future<int> getNumberOfPagesForGivenRepoName({String name, int resultsPerPage = 10});
+  // returns total number of pages for last getRepositories call
+  // if getRepositories method was not called or any other problems occurred, then the returned value will be 0
+  int getNumberOfPages();
 }

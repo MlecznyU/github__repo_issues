@@ -48,12 +48,9 @@ class MockRepoRepository extends _i1.Mock implements _i2.RepoRepository {
               returnValue: Future<List<_i4.RepoModel>>.value(<_i4.RepoModel>[]))
           as _i3.Future<List<_i4.RepoModel>>);
   @override
-  _i3.Future<int> getNumberOfPagesForGivenRepoName(
-          {String? name, int? resultsPerPage = 10}) =>
-      (super.noSuchMethod(
-          Invocation.method(#getNumberOfPagesForGivenRepoName, [],
-              {#name: name, #resultsPerPage: resultsPerPage}),
-          returnValue: Future<int>.value(0)) as _i3.Future<int>);
+  int getNumberOfPages() =>
+      (super.noSuchMethod(Invocation.method(#getNumberOfPages, []),
+          returnValue: 0) as int);
   @override
   String toString() => super.toString();
 }

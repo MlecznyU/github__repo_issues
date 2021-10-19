@@ -58,7 +58,7 @@ void main() {
     ],
     act: (bloc) async {
       when(_repoRepository.getRepositories(remoName: '1234', ownerName: 'name')).thenAnswer((_) => Future.value([]));
-      when(_repoRepository.getNumberOfPagesForGivenRepoName(name: '1234')).thenAnswer((_) => Future.value(1));
+      when(_repoRepository.getNumberOfPages()).thenReturn(1);
       await bloc.getRepositories(name: '1234', ownerName: 'name');
     },
   );
