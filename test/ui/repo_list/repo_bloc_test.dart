@@ -57,7 +57,7 @@ void main() {
       initialState.copyWith(repoName: '1234', stateType: StateType.loaded),
     ],
     act: (bloc) async {
-      when(_repoRepository.getRepositories(remoName: '1234')).thenAnswer((_) => Future.value([]));
+      when(_repoRepository.getRepositories(remoName: '1234', ownerName: 'name')).thenAnswer((_) => Future.value([]));
       when(_repoRepository.getNumberOfPagesForGivenRepoName(name: '1234')).thenAnswer((_) => Future.value(1));
       await bloc.getRepositories(name: '1234', ownerName: 'name');
     },
