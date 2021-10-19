@@ -23,10 +23,12 @@ class _$ApiRepoModelTearOff {
 
   _ApiRepoModel call(
       {@JsonKey(name: 'id') required int id,
+      @JsonKey(name: 'name') required String name,
       @JsonKey(name: 'full_name') required String fullName,
       @JsonKey(name: 'owner') required ApiOwnerModel ownerModel}) {
     return _ApiRepoModel(
       id: id,
+      name: name,
       fullName: fullName,
       ownerModel: ownerModel,
     );
@@ -44,6 +46,8 @@ const $ApiRepoModel = _$ApiRepoModelTearOff();
 mixin _$ApiRepoModel {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_name')
   String get fullName => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner')
@@ -62,6 +66,7 @@ abstract class $ApiRepoModelCopyWith<$Res> {
       _$ApiRepoModelCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'full_name') String fullName,
       @JsonKey(name: 'owner') ApiOwnerModel ownerModel});
 
@@ -79,6 +84,7 @@ class _$ApiRepoModelCopyWithImpl<$Res> implements $ApiRepoModelCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? fullName = freezed,
     Object? ownerModel = freezed,
   }) {
@@ -87,6 +93,10 @@ class _$ApiRepoModelCopyWithImpl<$Res> implements $ApiRepoModelCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -115,6 +125,7 @@ abstract class _$ApiRepoModelCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'full_name') String fullName,
       @JsonKey(name: 'owner') ApiOwnerModel ownerModel});
 
@@ -135,6 +146,7 @@ class __$ApiRepoModelCopyWithImpl<$Res> extends _$ApiRepoModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? fullName = freezed,
     Object? ownerModel = freezed,
   }) {
@@ -143,6 +155,10 @@ class __$ApiRepoModelCopyWithImpl<$Res> extends _$ApiRepoModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -160,6 +176,7 @@ class __$ApiRepoModelCopyWithImpl<$Res> extends _$ApiRepoModelCopyWithImpl<$Res>
 class _$_ApiRepoModel implements _ApiRepoModel {
   const _$_ApiRepoModel(
       {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'full_name') required this.fullName,
       @JsonKey(name: 'owner') required this.ownerModel});
 
@@ -170,6 +187,9 @@ class _$_ApiRepoModel implements _ApiRepoModel {
   @JsonKey(name: 'id')
   final int id;
   @override
+  @JsonKey(name: 'name')
+  final String name;
+  @override
   @JsonKey(name: 'full_name')
   final String fullName;
   @override
@@ -178,7 +198,7 @@ class _$_ApiRepoModel implements _ApiRepoModel {
 
   @override
   String toString() {
-    return 'ApiRepoModel(id: $id, fullName: $fullName, ownerModel: $ownerModel)';
+    return 'ApiRepoModel(id: $id, name: $name, fullName: $fullName, ownerModel: $ownerModel)';
   }
 
   @override
@@ -187,6 +207,7 @@ class _$_ApiRepoModel implements _ApiRepoModel {
         (other.runtimeType == runtimeType &&
             other is _ApiRepoModel &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.ownerModel, ownerModel) ||
@@ -194,7 +215,7 @@ class _$_ApiRepoModel implements _ApiRepoModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, fullName, ownerModel);
+  int get hashCode => Object.hash(runtimeType, id, name, fullName, ownerModel);
 
   @JsonKey(ignore: true)
   @override
@@ -210,6 +231,7 @@ class _$_ApiRepoModel implements _ApiRepoModel {
 abstract class _ApiRepoModel implements ApiRepoModel {
   const factory _ApiRepoModel(
           {@JsonKey(name: 'id') required int id,
+          @JsonKey(name: 'name') required String name,
           @JsonKey(name: 'full_name') required String fullName,
           @JsonKey(name: 'owner') required ApiOwnerModel ownerModel}) =
       _$_ApiRepoModel;
@@ -220,6 +242,9 @@ abstract class _ApiRepoModel implements ApiRepoModel {
   @override
   @JsonKey(name: 'id')
   int get id;
+  @override
+  @JsonKey(name: 'name')
+  String get name;
   @override
   @JsonKey(name: 'full_name')
   String get fullName;

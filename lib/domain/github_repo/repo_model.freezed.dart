@@ -21,11 +21,13 @@ class _$RepoModelTearOff {
       {required int repoId,
       required String repoName,
       required String ownerName,
+      required String fullName,
       required String ownerAvatar}) {
     return _RepoModel(
       repoId: repoId,
       repoName: repoName,
       ownerName: ownerName,
+      fullName: fullName,
       ownerAvatar: ownerAvatar,
     );
   }
@@ -39,6 +41,7 @@ mixin _$RepoModel {
   int get repoId => throw _privateConstructorUsedError;
   String get repoName => throw _privateConstructorUsedError;
   String get ownerName => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
   String get ownerAvatar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,7 +54,11 @@ abstract class $RepoModelCopyWith<$Res> {
   factory $RepoModelCopyWith(RepoModel value, $Res Function(RepoModel) then) =
       _$RepoModelCopyWithImpl<$Res>;
   $Res call(
-      {int repoId, String repoName, String ownerName, String ownerAvatar});
+      {int repoId,
+      String repoName,
+      String ownerName,
+      String fullName,
+      String ownerAvatar});
 }
 
 /// @nodoc
@@ -67,6 +74,7 @@ class _$RepoModelCopyWithImpl<$Res> implements $RepoModelCopyWith<$Res> {
     Object? repoId = freezed,
     Object? repoName = freezed,
     Object? ownerName = freezed,
+    Object? fullName = freezed,
     Object? ownerAvatar = freezed,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +89,10 @@ class _$RepoModelCopyWithImpl<$Res> implements $RepoModelCopyWith<$Res> {
       ownerName: ownerName == freezed
           ? _value.ownerName
           : ownerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       ownerAvatar: ownerAvatar == freezed
           ? _value.ownerAvatar
@@ -97,7 +109,11 @@ abstract class _$RepoModelCopyWith<$Res> implements $RepoModelCopyWith<$Res> {
       __$RepoModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int repoId, String repoName, String ownerName, String ownerAvatar});
+      {int repoId,
+      String repoName,
+      String ownerName,
+      String fullName,
+      String ownerAvatar});
 }
 
 /// @nodoc
@@ -114,6 +130,7 @@ class __$RepoModelCopyWithImpl<$Res> extends _$RepoModelCopyWithImpl<$Res>
     Object? repoId = freezed,
     Object? repoName = freezed,
     Object? ownerName = freezed,
+    Object? fullName = freezed,
     Object? ownerAvatar = freezed,
   }) {
     return _then(_RepoModel(
@@ -128,6 +145,10 @@ class __$RepoModelCopyWithImpl<$Res> extends _$RepoModelCopyWithImpl<$Res>
       ownerName: ownerName == freezed
           ? _value.ownerName
           : ownerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       ownerAvatar: ownerAvatar == freezed
           ? _value.ownerAvatar
@@ -144,6 +165,7 @@ class _$_RepoModel implements _RepoModel {
       {required this.repoId,
       required this.repoName,
       required this.ownerName,
+      required this.fullName,
       required this.ownerAvatar});
 
   @override
@@ -153,11 +175,13 @@ class _$_RepoModel implements _RepoModel {
   @override
   final String ownerName;
   @override
+  final String fullName;
+  @override
   final String ownerAvatar;
 
   @override
   String toString() {
-    return 'RepoModel(repoId: $repoId, repoName: $repoName, ownerName: $ownerName, ownerAvatar: $ownerAvatar)';
+    return 'RepoModel(repoId: $repoId, repoName: $repoName, ownerName: $ownerName, fullName: $fullName, ownerAvatar: $ownerAvatar)';
   }
 
   @override
@@ -170,13 +194,15 @@ class _$_RepoModel implements _RepoModel {
                 other.repoName == repoName) &&
             (identical(other.ownerName, ownerName) ||
                 other.ownerName == ownerName) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
             (identical(other.ownerAvatar, ownerAvatar) ||
                 other.ownerAvatar == ownerAvatar));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, repoId, repoName, ownerName, ownerAvatar);
+  int get hashCode => Object.hash(
+      runtimeType, repoId, repoName, ownerName, fullName, ownerAvatar);
 
   @JsonKey(ignore: true)
   @override
@@ -189,6 +215,7 @@ abstract class _RepoModel implements RepoModel {
       {required int repoId,
       required String repoName,
       required String ownerName,
+      required String fullName,
       required String ownerAvatar}) = _$_RepoModel;
 
   @override
@@ -197,6 +224,8 @@ abstract class _RepoModel implements RepoModel {
   String get repoName;
   @override
   String get ownerName;
+  @override
+  String get fullName;
   @override
   String get ownerAvatar;
   @override

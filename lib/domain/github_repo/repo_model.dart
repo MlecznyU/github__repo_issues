@@ -8,6 +8,7 @@ class RepoModel with _$RepoModel {
     required int repoId,
     required String repoName,
     required String ownerName,
+    required String fullName,
     required String ownerAvatar,
   }) = _RepoModel;
 }
