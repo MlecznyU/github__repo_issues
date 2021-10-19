@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart';
 import 'package:tech_challenge_flutter/domain/utils.dart';
 
-@Injectable(as: RepoRepository)
 class ApiRepoRepository implements RepoRepository {
   final Dio _dio;
   final String _baseRepoUrl;
