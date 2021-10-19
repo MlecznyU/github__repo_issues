@@ -30,13 +30,15 @@ class MockRepoRepository extends _i1.Mock implements _i2.RepoRepository {
 
   @override
   _i3.Future<List<_i4.RepoModel>> getRepositories(
-          {String? remoName,
+          {String? ownerName,
+          String? remoName,
           _i5.SortType? sortType = _i5.SortType.created,
           _i5.SortDirection? sortDirection = _i5.SortDirection.asc,
           int? limit = 10,
           int? page = 1}) =>
       (super.noSuchMethod(
               Invocation.method(#getRepositories, [], {
+                #ownerName: ownerName,
                 #remoName: remoName,
                 #sortType: sortType,
                 #sortDirection: sortDirection,

@@ -3,6 +3,7 @@ import 'package:tech_challenge_flutter/domain/utils.dart';
 
 abstract class RepoRepository {
   Future<List<RepoModel>> getRepositories({
+    required String ownerName,
     String remoName,
     SortType sortType = SortType.created,
     SortDirection sortDirection = SortDirection.asc,
