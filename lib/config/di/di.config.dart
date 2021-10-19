@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import '../../domain/github_repo/repo_repository.dart' as _i4;
 import '../../ui/repo_list/repo_bloc.dart' as _i6;
 import '../api_config.dart' as _i5;
+import 'bloc_module.dart' as _i9;
 import 'netwoking_module.dart' as _i7;
 import 'repository_modele.dart' as _i8; // ignore_for_file: unnecessary_lambdas
 
@@ -21,13 +22,23 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final networkingModule = _$NetworkingModule();
   final repositoryModule = _$RepositoryModule();
+  final blocModule = _$BlocModule(get);
   gh.lazySingleton<_i3.Dio>(() => networkingModule.dio);
   gh.lazySingleton<_i4.RepoRepository>(() =>
       repositoryModule.getRepoRepository(get<_i3.Dio>(), get<_i5.ApiConfig>()));
-  gh.factory<_i6.RepoBloc>(() => _i6.RepoBloc(get<_i4.RepoRepository>()));
+  gh.lazySingleton<_i6.RepoBloc>(() => blocModule.repoBloc);
   return get;
 }
 
 class _$NetworkingModule extends _i7.NetworkingModule {}
 
 class _$RepositoryModule extends _i8.RepositoryModule {}
+
+class _$BlocModule extends _i9.BlocModule {
+  _$BlocModule(this._getIt);
+
+  final _i1.GetIt _getIt;
+
+  @override
+  _i6.RepoBloc get repoBloc => _i6.RepoBloc(_getIt<_i4.RepoRepository>());
+}
