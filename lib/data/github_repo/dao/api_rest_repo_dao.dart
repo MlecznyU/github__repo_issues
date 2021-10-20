@@ -10,7 +10,7 @@ abstract class ApiRestRepoDao {
 
   @GET("/search/repositories")
   Future<ApiResponseModel> getRepos({
-    @Query('q') required String userName,
+    @Query('q') required String repoName,
     @Query('sort') required String sortType,
     @Query('order') required String sortDirection,
     @Query('per_page') required int limit,

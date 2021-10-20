@@ -12,7 +12,6 @@ class ApiRepoRepository implements RepoRepository {
 
   @override
   Future<Pair<List<RepoModel>, int>> getRepositoriesWithNumberOfPages({
-    required String ownerName,
     String remoName = '',
     SortType sortType = SortType.created,
     SortDirection sortDirection = SortDirection.asc,
@@ -20,7 +19,7 @@ class ApiRepoRepository implements RepoRepository {
     int page = 1,
   }) async {
     final response = await _apiRestRepoDao.getRepos(
-      userName: ownerName,
+      repoName: remoName,
       sortType: sortType.toQueryPar(),
       limit: limit,
       sortDirection: sortDirection.toQueryPar(),

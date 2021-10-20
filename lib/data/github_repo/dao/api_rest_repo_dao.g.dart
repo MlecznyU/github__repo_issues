@@ -15,14 +15,14 @@ class _ApiRestRepoDao implements ApiRestRepoDao {
 
   @override
   Future<ApiResponseModel> getRepos(
-      {required userName,
+      {required repoName,
       required sortType,
       required sortDirection,
       required limit,
       required page}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'q': userName,
+      r'q': repoName,
       r'sort': sortType,
       r'order': sortDirection,
       r'per_page': limit,

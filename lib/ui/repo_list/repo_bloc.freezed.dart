@@ -19,14 +19,12 @@ class _$RepoStateTearOff {
 
   _RepoState call(
       {required String repoName,
-      required String ownerName,
       required List<RepoModel> repoList,
       required StateType stateType,
       int currentPage = 1,
       int numberOfPages = 1}) {
     return _RepoState(
       repoName: repoName,
-      ownerName: ownerName,
       repoList: repoList,
       stateType: stateType,
       currentPage: currentPage,
@@ -41,7 +39,6 @@ const $RepoState = _$RepoStateTearOff();
 /// @nodoc
 mixin _$RepoState {
   String get repoName => throw _privateConstructorUsedError;
-  String get ownerName => throw _privateConstructorUsedError;
   List<RepoModel> get repoList => throw _privateConstructorUsedError;
   StateType get stateType => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
@@ -58,7 +55,6 @@ abstract class $RepoStateCopyWith<$Res> {
       _$RepoStateCopyWithImpl<$Res>;
   $Res call(
       {String repoName,
-      String ownerName,
       List<RepoModel> repoList,
       StateType stateType,
       int currentPage,
@@ -76,7 +72,6 @@ class _$RepoStateCopyWithImpl<$Res> implements $RepoStateCopyWith<$Res> {
   @override
   $Res call({
     Object? repoName = freezed,
-    Object? ownerName = freezed,
     Object? repoList = freezed,
     Object? stateType = freezed,
     Object? currentPage = freezed,
@@ -86,10 +81,6 @@ class _$RepoStateCopyWithImpl<$Res> implements $RepoStateCopyWith<$Res> {
       repoName: repoName == freezed
           ? _value.repoName
           : repoName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerName: ownerName == freezed
-          ? _value.ownerName
-          : ownerName // ignore: cast_nullable_to_non_nullable
               as String,
       repoList: repoList == freezed
           ? _value.repoList
@@ -119,7 +110,6 @@ abstract class _$RepoStateCopyWith<$Res> implements $RepoStateCopyWith<$Res> {
   @override
   $Res call(
       {String repoName,
-      String ownerName,
       List<RepoModel> repoList,
       StateType stateType,
       int currentPage,
@@ -138,7 +128,6 @@ class __$RepoStateCopyWithImpl<$Res> extends _$RepoStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? repoName = freezed,
-    Object? ownerName = freezed,
     Object? repoList = freezed,
     Object? stateType = freezed,
     Object? currentPage = freezed,
@@ -148,10 +137,6 @@ class __$RepoStateCopyWithImpl<$Res> extends _$RepoStateCopyWithImpl<$Res>
       repoName: repoName == freezed
           ? _value.repoName
           : repoName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerName: ownerName == freezed
-          ? _value.ownerName
-          : ownerName // ignore: cast_nullable_to_non_nullable
               as String,
       repoList: repoList == freezed
           ? _value.repoList
@@ -178,7 +163,6 @@ class __$RepoStateCopyWithImpl<$Res> extends _$RepoStateCopyWithImpl<$Res>
 class _$_RepoState implements _RepoState {
   const _$_RepoState(
       {required this.repoName,
-      required this.ownerName,
       required this.repoList,
       required this.stateType,
       this.currentPage = 1,
@@ -186,8 +170,6 @@ class _$_RepoState implements _RepoState {
 
   @override
   final String repoName;
-  @override
-  final String ownerName;
   @override
   final List<RepoModel> repoList;
   @override
@@ -201,7 +183,7 @@ class _$_RepoState implements _RepoState {
 
   @override
   String toString() {
-    return 'RepoState(repoName: $repoName, ownerName: $ownerName, repoList: $repoList, stateType: $stateType, currentPage: $currentPage, numberOfPages: $numberOfPages)';
+    return 'RepoState(repoName: $repoName, repoList: $repoList, stateType: $stateType, currentPage: $currentPage, numberOfPages: $numberOfPages)';
   }
 
   @override
@@ -211,8 +193,6 @@ class _$_RepoState implements _RepoState {
             other is _RepoState &&
             (identical(other.repoName, repoName) ||
                 other.repoName == repoName) &&
-            (identical(other.ownerName, ownerName) ||
-                other.ownerName == ownerName) &&
             const DeepCollectionEquality().equals(other.repoList, repoList) &&
             (identical(other.stateType, stateType) ||
                 other.stateType == stateType) &&
@@ -226,7 +206,6 @@ class _$_RepoState implements _RepoState {
   int get hashCode => Object.hash(
       runtimeType,
       repoName,
-      ownerName,
       const DeepCollectionEquality().hash(repoList),
       stateType,
       currentPage,
@@ -241,7 +220,6 @@ class _$_RepoState implements _RepoState {
 abstract class _RepoState implements RepoState {
   const factory _RepoState(
       {required String repoName,
-      required String ownerName,
       required List<RepoModel> repoList,
       required StateType stateType,
       int currentPage,
@@ -249,8 +227,6 @@ abstract class _RepoState implements RepoState {
 
   @override
   String get repoName;
-  @override
-  String get ownerName;
   @override
   List<RepoModel> get repoList;
   @override

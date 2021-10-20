@@ -3,7 +3,6 @@ import 'package:tech_challenge_flutter/domain/utils.dart';
 
 abstract class RepoRepository {
   Future<Pair<List<RepoModel>, int>> getRepositoriesWithNumberOfPages({
-    required String ownerName,
     String remoName,
     SortType sortType = SortType.created,
     SortDirection sortDirection = SortDirection.asc,

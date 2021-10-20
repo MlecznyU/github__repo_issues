@@ -9,7 +9,7 @@ import '../../mocks.mocks.dart';
 late MockRepoRepository _repoRepository;
 
 void main() {
-  const initialState = RepoState(stateType: StateType.initial, repoName: '', ownerName: '', repoList: []);
+  const initialState = RepoState(stateType: StateType.initial, repoName: '', repoList: []);
 
   RepoBloc _build() => RepoBloc(_repoRepository);
 
@@ -28,10 +28,10 @@ void main() {
     build: _build,
     expect: () => [],
     act: (bloc) async {
-      await bloc.getRepositories(name: '', ownerName: 'name');
-      await bloc.getRepositories(name: '1', ownerName: 'name');
-      await bloc.getRepositories(name: '12', ownerName: 'name');
-      await bloc.getRepositories(name: '123', ownerName: 'name');
+      await bloc.getRepositories(name: '');
+      await bloc.getRepositories(name: '1');
+      await bloc.getRepositories(name: '12');
+      await bloc.getRepositories(name: '123');
     },
   );
 
@@ -45,7 +45,7 @@ void main() {
     ],
     act: (bloc) async {
       when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234')).thenAnswer((_) => Future.error(Error()));
-      await bloc.getRepositories(name: '1234', ownerName: 'name');
+      await bloc.getRepositories(name: '1234');
     },
   );
 
@@ -58,9 +58,9 @@ void main() {
       initialState.copyWith(repoName: '1234', stateType: StateType.loaded),
     ],
     act: (bloc) async {
-      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234', ownerName: 'name'))
+      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234'))
           .thenAnswer((_) => Future.value(Pair([], 1)));
-      await bloc.getRepositories(name: '1234', ownerName: 'name');
+      await bloc.getRepositories(name: '1234');
     },
   );
 }

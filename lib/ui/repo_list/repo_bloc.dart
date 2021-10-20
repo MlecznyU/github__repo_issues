@@ -11,7 +11,6 @@ enum StateType { initial, loading, loaded, error }
 class RepoState with _$RepoState {
   const factory RepoState({
     required String repoName,
-    required String ownerName,
     required List<RepoModel> repoList,
     required StateType stateType,
     @Default(1) int currentPage,
@@ -20,25 +19,23 @@ class RepoState with _$RepoState {
 }
 
 class RepoBloc extends Cubit<RepoState> {
-  RepoBloc(this.repoRepository)
+  RepoBloc(this._repoRepository)
       : super(
           const RepoState(
             stateType: StateType.initial,
             repoName: '',
             repoList: [],
-            ownerName: '',
           ),
         );
 
-  final RepoRepository repoRepository;
+  final RepoRepository _repoRepository;
 
-  Future<void> getRepositories({required String name, required String ownerName, int pageNumber = 1}) async {
+  Future<void> getRepositories({required String name, int pageNumber = 1}) async {
     if (name.length < 4) return;
     emit(state.copyWith(stateType: StateType.loading, repoName: name));
 
     try {
-      final repoListWithPagesNumber = await repoRepository.getRepositoriesWithNumberOfPages(
-        ownerName: ownerName,
+      final repoListWithPagesNumber = await _repoRepository.getRepositoriesWithNumberOfPages(
         remoName: name,
         page: pageNumber,
       );
@@ -57,6 +54,6 @@ class RepoBloc extends Cubit<RepoState> {
 
   Future<void> goToPage(int page) async {
     emit(state.copyWith(currentPage: page));
-    await getRepositories(name: state.repoName, ownerName: state.ownerName);
+    await getRepositories(name: state.repoName);
   }
 }
