@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_challenge_flutter/config/di/di.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/repo_bloc.dart';
+import 'package:tech_challenge_flutter/ui/utils/ext_utils.dart';
+import 'package:tech_challenge_flutter/ui/utils/show_error_scaffold.dart';
 
 class RepoListPage extends StatelessWidget {
   const RepoListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocProvider<RepoBloc>(
       create: (BuildContext context) => inject<RepoBloc>(),
       child: SafeArea(
@@ -25,7 +28,7 @@ class RepoListPage extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
+                      color: theme.cardColor,
                       borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                     ),
                     child: Column(
@@ -33,20 +36,55 @@ class RepoListPage extends StatelessWidget {
                         const SearchBar(),
                         BlocBuilder<RepoBloc, RepoState>(
                           builder: (BuildContext context, RepoState state) {
-                            return Column(
-                                // children: [],
+                            switch (state.stateType) {
+                              case StateType.initial:
+                                return const SizedBox();
+                              case StateType.loading:
+                                return CircularProgressIndicator();
+                              case StateType.loaded:
+                                return Expanded(
+                                  child: ListView.builder(
+                                    itemCount: state.repoList.length,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.only(left: 16, top: 12, right: 16),
+                                        child: Row(
+                                          children: [
+                                            ClipOval(
+                                              child: SizedBox(
+                                                height: context.screenWidth() * 0.08,
+                                                child: Image.network(
+                                                  state.repoList[index].ownerAvatar,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 8),
+                                            Text(state.repoList[index].ownerName,
+                                                style: const TextStyle(fontWeight: FontWeight.bold)),
+                                            Text(' / ', style: TextStyle(color: theme.disabledColor)),
+                                            Flexible(
+                                              child: Text(
+                                                state.repoList[index].repoName,
+                                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 );
-
-                            // switch (state.stateType) {
-                            //   case StateType.initial:
-                            //     return Expanded(child: Icon(Icons.eighteen_mp));
-                            //   case StateType.loading:
-                            //     return Expanded(child: Icon(Icons.eighteen_mp));
-                            //   case StateType.loaded:
-                            //     return Expanded(child: Icon(Icons.eighteen_mp));
-                            //   case StateType.error:
-                            //     return Expanded(child: Icon(Icons.eighteen_mp));
-                            // }
+                              case StateType.error:
+                                showErrorScaffold(
+                                  context,
+                                  () => context
+                                      .read<RepoBloc>()
+                                      .getRepositories(name: state.repoName, pageNumber: state.currentPage),
+                                  'Cannot fetch repositories',
+                                );
+                                return const SizedBox();
+                            }
                           },
                         )
                       ],
