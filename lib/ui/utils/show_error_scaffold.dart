@@ -5,6 +5,7 @@ void showErrorScaffold(BuildContext context, VoidCallback onPressed, String titl
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.showSnackBar(
       SnackBar(
+        duration: const Duration(minutes: 1),
         content: Text(title),
         action: SnackBarAction(onPressed: onPressed, label: 'Try again'),
       ),

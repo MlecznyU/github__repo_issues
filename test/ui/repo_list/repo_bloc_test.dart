@@ -24,9 +24,14 @@ void main() {
   });
 
   blocTest<RepoBloc, RepoState>(
-    'bloc emits nothing on getRepositories called when repoName string is shorter then 4 chars',
+    'bloc emits only state with new name and page on getRepositories called when repoName string is shorter then 4 chars',
     build: _build,
-    expect: () => [],
+    expect: () => const [
+      RepoState(repoName: '', repoList: [], stateType: StateType.initial, currentPage: 1, numberOfPages: 1),
+      RepoState(repoName: '1', repoList: [], stateType: StateType.initial, currentPage: 1, numberOfPages: 1),
+      RepoState(repoName: '12', repoList: [], stateType: StateType.initial, currentPage: 1, numberOfPages: 1),
+      RepoState(repoName: '123', repoList: [], stateType: StateType.initial, currentPage: 1, numberOfPages: 1)
+    ],
     act: (bloc) async {
       await bloc.getRepositories(name: '');
       await bloc.getRepositories(name: '1');
@@ -58,7 +63,7 @@ void main() {
       initialState.copyWith(repoName: '1234', stateType: StateType.loaded),
     ],
     act: (bloc) async {
-      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234'))
+      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234', limit: 50))
           .thenAnswer((_) => Future.value(Pair([], 1)));
       await bloc.getRepositories(name: '1234');
     },
