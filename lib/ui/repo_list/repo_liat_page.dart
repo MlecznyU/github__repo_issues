@@ -30,23 +30,23 @@ class RepoListPage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        SearchBar(),
+                        const SearchBar(),
                         BlocBuilder<RepoBloc, RepoState>(
                           builder: (BuildContext context, RepoState state) {
                             return Column(
-                              children: [],
-                            );
+                                // children: [],
+                                );
 
-                            switch (state.stateType) {
-                              case StateType.initial:
-                                return Expanded(child: Icon(Icons.eighteen_mp));
-                              case StateType.loading:
-                                return Expanded(child: Icon(Icons.eighteen_mp));
-                              case StateType.loaded:
-                                return Expanded(child: Icon(Icons.eighteen_mp));
-                              case StateType.error:
-                                return Expanded(child: Icon(Icons.eighteen_mp));
-                            }
+                            // switch (state.stateType) {
+                            //   case StateType.initial:
+                            //     return Expanded(child: Icon(Icons.eighteen_mp));
+                            //   case StateType.loading:
+                            //     return Expanded(child: Icon(Icons.eighteen_mp));
+                            //   case StateType.loaded:
+                            //     return Expanded(child: Icon(Icons.eighteen_mp));
+                            //   case StateType.error:
+                            //     return Expanded(child: Icon(Icons.eighteen_mp));
+                            // }
                           },
                         )
                       ],

@@ -8,6 +8,8 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    - "**/*.config.dart"
   errors:
     missing_return: error
     missing_required_param: error

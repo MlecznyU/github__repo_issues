@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
-import 'package:tech_challenge_flutter/data/github_repo/model/api_repo_model.dart';
 import 'package:tech_challenge_flutter/data/github_repo/model/api_response_model.dart';
 
 part 'api_rest_repo_dao.g.dart';
