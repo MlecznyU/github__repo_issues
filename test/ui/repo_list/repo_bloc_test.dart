@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tech_challenge_flutter/domain/utils.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/repo_bloc.dart';
 
 import '../../mocks.mocks.dart';
@@ -43,7 +44,7 @@ void main() {
       initialState.copyWith(repoName: '1234', stateType: StateType.error),
     ],
     act: (bloc) async {
-      when(_repoRepository.getRepositories(remoName: '1234')).thenAnswer((_) => Future.error(Error()));
+      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234')).thenAnswer((_) => Future.error(Error()));
       await bloc.getRepositories(name: '1234', ownerName: 'name');
     },
   );
@@ -57,8 +58,8 @@ void main() {
       initialState.copyWith(repoName: '1234', stateType: StateType.loaded),
     ],
     act: (bloc) async {
-      when(_repoRepository.getRepositories(remoName: '1234', ownerName: 'name')).thenAnswer((_) => Future.value([]));
-      when(_repoRepository.getNumberOfPages()).thenReturn(1);
+      when(_repoRepository.getRepositoriesWithNumberOfPages(remoName: '1234', ownerName: 'name'))
+          .thenAnswer((_) => Future.value(Pair([], 1)));
       await bloc.getRepositories(name: '1234', ownerName: 'name');
     },
   );
