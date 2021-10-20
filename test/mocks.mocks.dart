@@ -2,13 +2,17 @@
 // in tech_challenge_flutter/test/mocks.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart'
-    as _i5;
-import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart'
+import 'package:tech_challenge_flutter/data/github_repo/dao/api_rest_repo_dao.dart'
+    as _i7;
+import 'package:tech_challenge_flutter/data/github_repo/model/api_response_model.dart'
     as _i3;
+import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart'
+    as _i6;
+import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart'
+    as _i4;
 import 'package:tech_challenge_flutter/domain/utils.dart' as _i2;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,16 +26,19 @@ import 'package:tech_challenge_flutter/domain/utils.dart' as _i2;
 
 class _FakePair_0<E, F> extends _i1.Fake implements _i2.Pair<E, F> {}
 
+class _FakeApiResponseModel_1 extends _i1.Fake implements _i3.ApiResponseModel {
+}
+
 /// A class which mocks [RepoRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRepoRepository extends _i1.Mock implements _i3.RepoRepository {
+class MockRepoRepository extends _i1.Mock implements _i4.RepoRepository {
   MockRepoRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Pair<List<_i5.RepoModel>, int>>
+  _i5.Future<_i2.Pair<List<_i6.RepoModel>, int>>
       getRepositoriesWithNumberOfPages(
               {String? remoName,
               _i2.SortType? sortType = _i2.SortType.created,
@@ -46,9 +53,39 @@ class MockRepoRepository extends _i1.Mock implements _i3.RepoRepository {
                     #limit: limit,
                     #page: page
                   }),
-                  returnValue: Future<_i2.Pair<List<_i5.RepoModel>, int>>.value(
-                      _FakePair_0<List<_i5.RepoModel>, int>()))
-              as _i4.Future<_i2.Pair<List<_i5.RepoModel>, int>>);
+                  returnValue: Future<_i2.Pair<List<_i6.RepoModel>, int>>.value(
+                      _FakePair_0<List<_i6.RepoModel>, int>()))
+              as _i5.Future<_i2.Pair<List<_i6.RepoModel>, int>>);
+  @override
+  String toString() => super.toString();
+}
+
+/// A class which mocks [ApiRestRepoDao].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockApiRestRepoDao extends _i1.Mock implements _i7.ApiRestRepoDao {
+  MockApiRestRepoDao() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i3.ApiResponseModel> getRepos(
+          {String? repoName,
+          String? sortType,
+          String? sortDirection,
+          int? limit,
+          int? page}) =>
+      (super.noSuchMethod(
+              Invocation.method(#getRepos, [], {
+                #repoName: repoName,
+                #sortType: sortType,
+                #sortDirection: sortDirection,
+                #limit: limit,
+                #page: page
+              }),
+              returnValue:
+                  Future<_i3.ApiResponseModel>.value(_FakeApiResponseModel_1()))
+          as _i5.Future<_i3.ApiResponseModel>);
   @override
   String toString() => super.toString();
 }

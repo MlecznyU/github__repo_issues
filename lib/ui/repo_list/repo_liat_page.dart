@@ -75,8 +75,8 @@ class _SearchBarState extends State<SearchBar> {
   @override
   void initState() {
     textController = TextEditingController()
-      ..addListener(() {
-        context.read<RepoBloc>().getRepositories(name: textController.text);
+      ..addListener(() async {
+        await context.read<RepoBloc>().getRepositories(name: textController.text);
       });
 
     super.initState();

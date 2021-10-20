@@ -26,6 +26,9 @@ class ApiRepoRepository implements RepoRepository {
       page: page,
     );
 
-    return Pair(response.repoList.map((ApiRepoModel model) => model.toDomain()).toList(), response.totalCount ~/ limit);
+    return Pair(
+      response.repoList.map((ApiRepoModel model) => model.toDomain()).toList(),
+      (response.totalCount / limit).ceil(),
+    );
   }
 }
