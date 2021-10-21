@@ -36,12 +36,13 @@ class IssuesList extends StatelessWidget {
                     return Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
                         border: Border(
                           top: BorderSide(color: Colors.white60, width: index == 0 ? 1 : 0),
                           bottom: const BorderSide(color: Colors.white60),
                         ),
                       ),
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

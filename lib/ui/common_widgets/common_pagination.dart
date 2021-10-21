@@ -14,6 +14,8 @@ class CommonPagination extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (numberOfPages <= 1) return const SizedBox();
+
     return SizedBox(
       height: 40,
       child: Padding(
@@ -28,8 +30,8 @@ class CommonPagination extends StatelessWidget {
               child: InkWell(
                 onTap: () => onPagePressed(index),
                 child: Container(
-                  width: 25,
                   height: 25,
+                  width: 25,
                   color: Theme.of(context).cardColor,
                   child: Center(
                     child: Text(

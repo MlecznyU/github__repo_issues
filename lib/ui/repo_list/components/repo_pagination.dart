@@ -11,7 +11,6 @@ class RepoPagination extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RepoBloc, RepoState>(
       builder: (BuildContext context, RepoState state) {
-        if (state.numberOfPages == 1) return const SizedBox();
         return Column(
           children: [
             CommonPagination(

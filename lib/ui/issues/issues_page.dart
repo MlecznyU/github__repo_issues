@@ -24,7 +24,7 @@ class IssuesPage extends StatelessWidget {
               ),
             ),
             const IssuesList(),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             BlocBuilder<IssueBloc, IssueState>(
               builder: (BuildContext context, IssueState state) {
                 return CommonPagination(

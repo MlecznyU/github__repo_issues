@@ -31,7 +31,9 @@ class RepoBloc extends Cubit<RepoState> {
 
   Future<void> getRepositories({required String name, int? pageNumber}) async {
     if (name.length < 4) {
-      emit(state.copyWith(repoName: name, currentPage: pageNumber ?? state.currentPage));
+      emit(
+        state.copyWith(repoName: name, currentPage: pageNumber ?? state.currentPage, repoList: [], numberOfPages: 1),
+      );
       return;
     }
     emit(state.copyWith(stateType: StateType.loading, repoName: name, currentPage: pageNumber ?? state.currentPage));
