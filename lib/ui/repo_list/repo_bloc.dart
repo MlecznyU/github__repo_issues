@@ -54,4 +54,9 @@ class RepoBloc extends Cubit<RepoState> {
       emit(state.copyWith(stateType: StateType.error));
     }
   }
+
+  Future<void> refreshList() async {
+    emit(state.copyWith(repoList: []));
+    await getRepositories(name: state.repoName, pageNumber: 1);
+  }
 }

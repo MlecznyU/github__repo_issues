@@ -51,4 +51,9 @@ class IssueBloc extends Cubit<IssueState> {
       emit(state.copyWith(stateType: StateType.error));
     }
   }
+
+  Future<void> refreshList() async {
+    emit(state.copyWith(issuesList: []));
+    await getIssuesForPage(pageNumber: 1);
+  }
 }

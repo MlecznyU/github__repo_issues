@@ -11,61 +11,64 @@ class IssuesList extends StatelessWidget {
     return BlocBuilder<IssueBloc, IssueState>(
       builder: (BuildContext context, IssueState state) {
         return Expanded(
-          child: ListView.builder(
-            itemCount: state.issuesList.length,
-            itemBuilder: (context, index) {
-              final issue = state.issuesList[index];
-              String closedPart = '';
+          child: RefreshIndicator(
+            onRefresh: () => context.read<IssueBloc>().refreshList(),
+            child: ListView.builder(
+              itemCount: state.issuesList.length,
+              itemBuilder: (context, index) {
+                final issue = state.issuesList[index];
+                String closedPart = '';
 
-              final createdAtFormatted = DateTime.now().difference(issue.createdAt).inDays;
-              if (!issue.open) {
-                closedPart = '\nClosed ${DateTime.now().difference(issue.closedAt!).inDays} days ago';
-              }
+                final createdAtFormatted = DateTime.now().difference(issue.createdAt).inDays;
+                if (!issue.open) {
+                  closedPart = '\nClosed ${DateTime.now().difference(issue.closedAt!).inDays} days ago';
+                }
 
-              return Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.white60, width: index == 0 ? 1 : 0),
-                    bottom: const BorderSide(color: Colors.white60),
+                return Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(color: Colors.white60, width: index == 0 ? 1 : 0),
+                      bottom: const BorderSide(color: Colors.white60),
+                    ),
                   ),
-                ),
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 30,
-                          child: Icon(
-                            issue.open ? Icons.circle_outlined : Icons.check_circle,
-                            color: issue.open ? Colors.green : Colors.red,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: 30,
+                            child: Icon(
+                              issue.open ? Icons.circle_outlined : Icons.check_circle,
+                              color: issue.open ? Colors.green : Colors.red,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        SizedBox(
-                          width: context.screenWidth() * 0.8,
-                          child: Text(
-                            state.issuesList[index].issueTitle,
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          const SizedBox(width: 8),
+                          SizedBox(
+                            width: context.screenWidth() * 0.8,
+                            child: Text(
+                              state.issuesList[index].issueTitle,
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 38.0),
-                      child: Text(
-                        '#${issue.issueNumber} opened $createdAtFormatted days ago by ${issue.author} $closedPart',
-                        style: TextStyle(fontSize: 12, color: Theme.of(context).disabledColor),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              );
-            },
+                      Padding(
+                        padding: const EdgeInsets.only(left: 38.0),
+                        child: Text(
+                          '#${issue.issueNumber} opened $createdAtFormatted days ago by ${issue.author} $closedPart',
+                          style: TextStyle(fontSize: 12, color: Theme.of(context).disabledColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         );
       },
