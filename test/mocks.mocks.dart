@@ -110,14 +110,32 @@ class MockApiRestIssueDao extends _i1.Mock implements _i9.ApiRestIssueDao {
   }
 
   @override
-  _i6.Future<_i4.ApiIssueResponseModel> getIssues(
+  _i6.Future<_i4.ApiIssueResponseModel> getOpenIssues(
           {String? repoFullName,
           String? sortType,
           String? sortDirection,
           int? limit,
           int? page}) =>
       (super.noSuchMethod(
-              Invocation.method(#getIssues, [], {
+              Invocation.method(#getOpenIssues, [], {
+                #repoFullName: repoFullName,
+                #sortType: sortType,
+                #sortDirection: sortDirection,
+                #limit: limit,
+                #page: page
+              }),
+              returnValue: Future<_i4.ApiIssueResponseModel>.value(
+                  _FakeApiIssueResponseModel_2()))
+          as _i6.Future<_i4.ApiIssueResponseModel>);
+  @override
+  _i6.Future<_i4.ApiIssueResponseModel> getClosedIssues(
+          {String? repoFullName,
+          String? sortType,
+          String? sortDirection,
+          int? limit,
+          int? page}) =>
+      (super.noSuchMethod(
+              Invocation.method(#getClosedIssues, [], {
                 #repoFullName: repoFullName,
                 #sortType: sortType,
                 #sortDirection: sortDirection,
@@ -145,14 +163,16 @@ class MockIssueRepository extends _i1.Mock implements _i10.IssueRepository {
           _i2.SortType? sortType = _i2.SortType.created,
           _i2.SortDirection? sortDirection = _i2.SortDirection.asc,
           int? limit = 10,
-          int? page = 1}) =>
+          int? page = 1,
+          bool? open}) =>
       (super.noSuchMethod(
               Invocation.method(#getIssuesWithNumberOfPages, [], {
                 #repositoryFullName: repositoryFullName,
                 #sortType: sortType,
                 #sortDirection: sortDirection,
                 #limit: limit,
-                #page: page
+                #page: page,
+                #open: open
               }),
               returnValue: Future<_i2.Pair<List<_i11.IssueModel>, int>>.value(
                   _FakePair_0<List<_i11.IssueModel>, int>()))

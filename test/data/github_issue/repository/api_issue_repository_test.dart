@@ -27,7 +27,7 @@ void main() {
     'getIssues method is called on ApiRestIssueDao with correct data',
     () async {
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: limit,
           sortDirection: sortDir.toQueryPar(),
@@ -44,7 +44,7 @@ void main() {
         repositoryFullName: repoFullName,
       );
       verify(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: limit,
           sortDirection: sortDir.toQueryPar(),
@@ -60,7 +60,7 @@ void main() {
     'Pair object is returned with last object numberOfPages',
     () async {
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: 20,
           sortDirection: sortDir.toQueryPar(),
@@ -79,7 +79,7 @@ void main() {
       expect(response.last, 10);
 
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: 10,
           sortDirection: sortDir.toQueryPar(),
@@ -97,7 +97,7 @@ void main() {
       expect(response2.last, 500);
 
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: 5,
           sortDirection: sortDir.toQueryPar(),
@@ -140,7 +140,7 @@ void main() {
       );
 
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: limit,
           sortDirection: sortDir.toQueryPar(),
@@ -159,7 +159,7 @@ void main() {
       expect(response.first, []);
 
       when(
-        _apiRestIssueDao.getIssues(
+        _apiRestIssueDao.getOpenIssues(
           page: page,
           limit: 10,
           sortDirection: sortDir.toQueryPar(),

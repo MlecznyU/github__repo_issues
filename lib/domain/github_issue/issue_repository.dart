@@ -11,5 +11,6 @@ abstract class IssueRepository {
     int limit = 10,
     // Page number of the results
     int page = 1,
+    bool open,
   });
 }
