@@ -12,7 +12,7 @@ class ApiIssueModel with _$ApiIssueModel {
     @JsonKey(name: 'number') required int number,
     @JsonKey(name: 'title') required String issueTitle,
     @JsonKey(name: 'user') required ApiUserModel author,
-    @JsonKey(name: 'state') required bool open,
+    @JsonKey(name: 'state') required String openClosed,
     @JsonKey(name: 'created_at') required DateTime createdAt,
     @JsonKey(name: 'closed_at') required DateTime? closedAt,
   }) = _ApiIssueModel;
@@ -21,12 +21,16 @@ class ApiIssueModel with _$ApiIssueModel {
 }
 
 extension Mapper on ApiIssueModel {
-  IssueModel toDomain() => IssueModel(
-        author: author.userName,
-        closedAt: closedAt,
-        createdAt: createdAt,
-        issueNumber: number,
-        issueTitle: issueTitle,
-        open: open,
-      );
+  IssueModel toDomain() {
+    final isOpen = openClosed == 'open';
+
+    return IssueModel(
+      author: author.userName,
+      closedAt: closedAt,
+      createdAt: createdAt,
+      issueNumber: number,
+      issueTitle: issueTitle,
+      open: isOpen,
+    );
+  }
 }

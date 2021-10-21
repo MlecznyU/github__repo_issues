@@ -11,7 +11,7 @@ _$_ApiIssueModel _$$_ApiIssueModelFromJson(Map<String, dynamic> json) =>
       number: json['number'] as int,
       issueTitle: json['title'] as String,
       author: ApiUserModel.fromJson(json['user'] as Map<String, dynamic>),
-      open: json['state'] as bool,
+      openClosed: json['state'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       closedAt: json['closed_at'] == null
           ? null
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$_ApiIssueModelToJson(_$_ApiIssueModel instance) =>
       'number': instance.number,
       'title': instance.issueTitle,
       'user': instance.author,
-      'state': instance.open,
+      'state': instance.openClosed,
       'created_at': instance.createdAt.toIso8601String(),
       'closed_at': instance.closedAt?.toIso8601String(),
     };

@@ -13,6 +13,10 @@ import 'package:tech_challenge_flutter/data/github_repo/dao/api_rest_repo_dao.da
     as _i8;
 import 'package:tech_challenge_flutter/data/github_repo/model/api_repo_response_model.dart'
     as _i3;
+import 'package:tech_challenge_flutter/domain/github_issue/issue_model.dart'
+    as _i11;
+import 'package:tech_challenge_flutter/domain/github_issue/issue_repository.dart'
+    as _i10;
 import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart'
     as _i7;
 import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart'
@@ -123,6 +127,36 @@ class MockApiRestIssueDao extends _i1.Mock implements _i9.ApiRestIssueDao {
               returnValue: Future<_i4.ApiIssueResponseModel>.value(
                   _FakeApiIssueResponseModel_2()))
           as _i6.Future<_i4.ApiIssueResponseModel>);
+  @override
+  String toString() => super.toString();
+}
+
+/// A class which mocks [IssueRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIssueRepository extends _i1.Mock implements _i10.IssueRepository {
+  MockIssueRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i2.Pair<List<_i11.IssueModel>, int>> getIssuesWithNumberOfPages(
+          {String? repositoryFullName,
+          _i2.SortType? sortType = _i2.SortType.created,
+          _i2.SortDirection? sortDirection = _i2.SortDirection.asc,
+          int? limit = 10,
+          int? page = 1}) =>
+      (super.noSuchMethod(
+              Invocation.method(#getIssuesWithNumberOfPages, [], {
+                #repositoryFullName: repositoryFullName,
+                #sortType: sortType,
+                #sortDirection: sortDirection,
+                #limit: limit,
+                #page: page
+              }),
+              returnValue: Future<_i2.Pair<List<_i11.IssueModel>, int>>.value(
+                  _FakePair_0<List<_i11.IssueModel>, int>()))
+          as _i6.Future<_i2.Pair<List<_i11.IssueModel>, int>>);
   @override
   String toString() => super.toString();
 }

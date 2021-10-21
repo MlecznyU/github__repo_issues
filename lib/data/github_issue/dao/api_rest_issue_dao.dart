@@ -8,9 +8,9 @@ part 'api_rest_issue_dao.g.dart';
 abstract class ApiRestIssueDao {
   factory ApiRestIssueDao(Dio dio, {String baseUrl}) = _ApiRestIssueDao;
 
-  @GET("/search/issues")
+  @GET("/search/issues?q=is:issue%20repo:{full_name}")
   Future<ApiIssueResponseModel> getIssues({
-    @Query('q') required String repoFullName,
+    @Path('full_name') required String repoFullName,
     @Query('sort') required String sortType,
     @Query('order') required String sortDirection,
     @Query('per_page') required int limit,

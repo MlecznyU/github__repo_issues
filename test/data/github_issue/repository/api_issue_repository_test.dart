@@ -127,7 +127,7 @@ void main() {
         createdAt: DateTime(1998),
         issueTitle: 'issueTitle',
         number: 1,
-        open: true,
+        openClosed: 'open',
       );
 
       final apiModel2 = ApiIssueModel(
@@ -136,7 +136,7 @@ void main() {
         createdAt: DateTime(2001),
         issueTitle: 'issueTitle2',
         number: 2,
-        open: false,
+        openClosed: 'closed',
       );
 
       when(

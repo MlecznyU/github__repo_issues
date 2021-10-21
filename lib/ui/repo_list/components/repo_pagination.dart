@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/repo_bloc.dart';
+import 'package:tech_challenge_flutter/ui/utils/bloc_common.dart';
 
 class RepoPagination extends StatelessWidget {
   const RepoPagination({Key? key}) : super(key: key);

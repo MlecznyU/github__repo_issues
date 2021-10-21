@@ -7,17 +7,23 @@ void main() {
   test('toDomain method called on ApiRepoModel returns domain model with mapped data', () {
     const avatarUrl = 'avatarUrl';
     const number = 1;
-    const open = false;
+    const open = true;
     const userName = 'userName';
     const title = 'title';
     final createdAt = DateTime(1999);
     final closedAt = DateTime(2000);
     const ApiUserModel apiUserModel = ApiUserModel(userName: userName, userAvatar: avatarUrl);
-    final ApiIssueModel apiRepoModel = ApiIssueModel(
-        open: open, issueTitle: title, author: apiUserModel, number: number, createdAt: createdAt, closedAt: closedAt);
+    final ApiIssueModel apiIssueModel = ApiIssueModel(
+      openClosed: 'open',
+      issueTitle: title,
+      author: apiUserModel,
+      number: number,
+      createdAt: createdAt,
+      closedAt: closedAt,
+    );
 
     expect(
-      apiRepoModel.toDomain(),
+      apiIssueModel.toDomain(),
       IssueModel(
         closedAt: closedAt,
         createdAt: createdAt,

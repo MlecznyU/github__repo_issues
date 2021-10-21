@@ -25,14 +25,14 @@ class _$ApiIssueModelTearOff {
       {@JsonKey(name: 'number') required int number,
       @JsonKey(name: 'title') required String issueTitle,
       @JsonKey(name: 'user') required ApiUserModel author,
-      @JsonKey(name: 'state') required bool open,
+      @JsonKey(name: 'state') required String openClosed,
       @JsonKey(name: 'created_at') required DateTime createdAt,
       @JsonKey(name: 'closed_at') required DateTime? closedAt}) {
     return _ApiIssueModel(
       number: number,
       issueTitle: issueTitle,
       author: author,
-      open: open,
+      openClosed: openClosed,
       createdAt: createdAt,
       closedAt: closedAt,
     );
@@ -55,7 +55,7 @@ mixin _$ApiIssueModel {
   @JsonKey(name: 'user')
   ApiUserModel get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'state')
-  bool get open => throw _privateConstructorUsedError;
+  String get openClosed => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'closed_at')
@@ -76,7 +76,7 @@ abstract class $ApiIssueModelCopyWith<$Res> {
       {@JsonKey(name: 'number') int number,
       @JsonKey(name: 'title') String issueTitle,
       @JsonKey(name: 'user') ApiUserModel author,
-      @JsonKey(name: 'state') bool open,
+      @JsonKey(name: 'state') String openClosed,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'closed_at') DateTime? closedAt});
 
@@ -97,7 +97,7 @@ class _$ApiIssueModelCopyWithImpl<$Res>
     Object? number = freezed,
     Object? issueTitle = freezed,
     Object? author = freezed,
-    Object? open = freezed,
+    Object? openClosed = freezed,
     Object? createdAt = freezed,
     Object? closedAt = freezed,
   }) {
@@ -114,10 +114,10 @@ class _$ApiIssueModelCopyWithImpl<$Res>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as ApiUserModel,
-      open: open == freezed
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as bool,
+      openClosed: openClosed == freezed
+          ? _value.openClosed
+          : openClosed // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -148,7 +148,7 @@ abstract class _$ApiIssueModelCopyWith<$Res>
       {@JsonKey(name: 'number') int number,
       @JsonKey(name: 'title') String issueTitle,
       @JsonKey(name: 'user') ApiUserModel author,
-      @JsonKey(name: 'state') bool open,
+      @JsonKey(name: 'state') String openClosed,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'closed_at') DateTime? closedAt});
 
@@ -172,7 +172,7 @@ class __$ApiIssueModelCopyWithImpl<$Res>
     Object? number = freezed,
     Object? issueTitle = freezed,
     Object? author = freezed,
-    Object? open = freezed,
+    Object? openClosed = freezed,
     Object? createdAt = freezed,
     Object? closedAt = freezed,
   }) {
@@ -189,10 +189,10 @@ class __$ApiIssueModelCopyWithImpl<$Res>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as ApiUserModel,
-      open: open == freezed
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as bool,
+      openClosed: openClosed == freezed
+          ? _value.openClosed
+          : openClosed // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -212,7 +212,7 @@ class _$_ApiIssueModel implements _ApiIssueModel {
       {@JsonKey(name: 'number') required this.number,
       @JsonKey(name: 'title') required this.issueTitle,
       @JsonKey(name: 'user') required this.author,
-      @JsonKey(name: 'state') required this.open,
+      @JsonKey(name: 'state') required this.openClosed,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'closed_at') required this.closedAt});
 
@@ -230,7 +230,7 @@ class _$_ApiIssueModel implements _ApiIssueModel {
   final ApiUserModel author;
   @override
   @JsonKey(name: 'state')
-  final bool open;
+  final String openClosed;
   @override
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
@@ -240,7 +240,7 @@ class _$_ApiIssueModel implements _ApiIssueModel {
 
   @override
   String toString() {
-    return 'ApiIssueModel(number: $number, issueTitle: $issueTitle, author: $author, open: $open, createdAt: $createdAt, closedAt: $closedAt)';
+    return 'ApiIssueModel(number: $number, issueTitle: $issueTitle, author: $author, openClosed: $openClosed, createdAt: $createdAt, closedAt: $closedAt)';
   }
 
   @override
@@ -252,7 +252,8 @@ class _$_ApiIssueModel implements _ApiIssueModel {
             (identical(other.issueTitle, issueTitle) ||
                 other.issueTitle == issueTitle) &&
             (identical(other.author, author) || other.author == author) &&
-            (identical(other.open, open) || other.open == open) &&
+            (identical(other.openClosed, openClosed) ||
+                other.openClosed == openClosed) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.closedAt, closedAt) ||
@@ -261,7 +262,7 @@ class _$_ApiIssueModel implements _ApiIssueModel {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, number, issueTitle, author, open, createdAt, closedAt);
+      runtimeType, number, issueTitle, author, openClosed, createdAt, closedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -279,7 +280,7 @@ abstract class _ApiIssueModel implements ApiIssueModel {
           {@JsonKey(name: 'number') required int number,
           @JsonKey(name: 'title') required String issueTitle,
           @JsonKey(name: 'user') required ApiUserModel author,
-          @JsonKey(name: 'state') required bool open,
+          @JsonKey(name: 'state') required String openClosed,
           @JsonKey(name: 'created_at') required DateTime createdAt,
           @JsonKey(name: 'closed_at') required DateTime? closedAt}) =
       _$_ApiIssueModel;
@@ -298,7 +299,7 @@ abstract class _ApiIssueModel implements ApiIssueModel {
   ApiUserModel get author;
   @override
   @JsonKey(name: 'state')
-  bool get open;
+  String get openClosed;
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;

@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tech_challenge_flutter/domain/utils.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/repo_bloc.dart';
+import 'package:tech_challenge_flutter/ui/utils/bloc_common.dart';
 
 import '../../mocks.mocks.dart';
 

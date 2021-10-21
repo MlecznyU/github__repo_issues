@@ -22,7 +22,6 @@ class _ApiRestIssueDao implements ApiRestIssueDao {
       required page}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'q': repoFullName,
       r'sort': sortType,
       r'order': sortDirection,
       r'per_page': limit,
@@ -31,11 +30,12 @@ class _ApiRestIssueDao implements ApiRestIssueDao {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiIssueResponseModel>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/search/issues',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<ApiIssueResponseModel>(Options(
+                method: 'GET', headers: _headers, extra: _extra)
+            .compose(
+                _dio.options, '/search/issues?q=is:issue%20repo:$repoFullName',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ApiIssueResponseModel.fromJson(_result.data!);
     return value;
   }

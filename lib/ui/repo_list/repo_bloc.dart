@@ -2,10 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_model.dart';
 import 'package:tech_challenge_flutter/domain/github_repo/repo_repository.dart';
+import 'package:tech_challenge_flutter/ui/utils/bloc_common.dart';
 
 part 'repo_bloc.freezed.dart';
-
-enum StateType { initial, loading, loaded, error }
 
 @freezed
 class RepoState with _$RepoState {
@@ -54,10 +53,5 @@ class RepoBloc extends Cubit<RepoState> {
     } catch (e) {
       emit(state.copyWith(stateType: StateType.error));
     }
-  }
-
-  Future<void> goToPage(int page) async {
-    emit(state.copyWith(currentPage: page));
-    await getRepositories(name: state.repoName);
   }
 }
