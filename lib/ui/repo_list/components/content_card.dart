@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_challenge_flutter/config/di/di.dart';
+import 'package:tech_challenge_flutter/ui/common_widgets/empty_content.dart';
 import 'package:tech_challenge_flutter/ui/issues/issue_bloc.dart';
 import 'package:tech_challenge_flutter/ui/issues/issues_page.dart';
 import 'package:tech_challenge_flutter/ui/repo_list/components/search_bar.dart';
@@ -32,7 +33,7 @@ class ContentCard extends StatelessWidget {
 
                   switch (state.stateType) {
                     case StateType.initial:
-                      return const _EmptyContent();
+                      return const EmptyContent();
                     case StateType.loading:
                       return const Expanded(child: Center(child: CircularProgressIndicator(color: Colors.white)));
                     case StateType.loaded:
@@ -94,28 +95,13 @@ class ContentCard extends StatelessWidget {
                             .getRepositories(name: state.repoName, pageNumber: state.currentPage),
                         'Cannot fetch repositories',
                       );
-                      return const _EmptyContent();
+                      return const EmptyContent();
                   }
                 },
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _EmptyContent extends StatelessWidget {
-  const _EmptyContent({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: SizedBox(width: 150, child: Image.asset('assets/github_logo.png', color: Colors.white60)),
       ),
     );
   }
