@@ -23,8 +23,7 @@ class _$IssueModelTearOff {
       required String author,
       required bool open,
       required DateTime createdAt,
-      required DateTime? closedAt,
-      required String? closedByUserName}) {
+      required DateTime? closedAt}) {
     return _IssueModel(
       issueNumber: issueNumber,
       issueTitle: issueTitle,
@@ -32,7 +31,6 @@ class _$IssueModelTearOff {
       open: open,
       createdAt: createdAt,
       closedAt: closedAt,
-      closedByUserName: closedByUserName,
     );
   }
 }
@@ -48,7 +46,6 @@ mixin _$IssueModel {
   bool get open => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime? get closedAt => throw _privateConstructorUsedError;
-  String? get closedByUserName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IssueModelCopyWith<IssueModel> get copyWith =>
@@ -66,8 +63,7 @@ abstract class $IssueModelCopyWith<$Res> {
       String author,
       bool open,
       DateTime createdAt,
-      DateTime? closedAt,
-      String? closedByUserName});
+      DateTime? closedAt});
 }
 
 /// @nodoc
@@ -86,7 +82,6 @@ class _$IssueModelCopyWithImpl<$Res> implements $IssueModelCopyWith<$Res> {
     Object? open = freezed,
     Object? createdAt = freezed,
     Object? closedAt = freezed,
-    Object? closedByUserName = freezed,
   }) {
     return _then(_value.copyWith(
       issueNumber: issueNumber == freezed
@@ -113,10 +108,6 @@ class _$IssueModelCopyWithImpl<$Res> implements $IssueModelCopyWith<$Res> {
           ? _value.closedAt
           : closedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      closedByUserName: closedByUserName == freezed
-          ? _value.closedByUserName
-          : closedByUserName // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -133,8 +124,7 @@ abstract class _$IssueModelCopyWith<$Res> implements $IssueModelCopyWith<$Res> {
       String author,
       bool open,
       DateTime createdAt,
-      DateTime? closedAt,
-      String? closedByUserName});
+      DateTime? closedAt});
 }
 
 /// @nodoc
@@ -155,7 +145,6 @@ class __$IssueModelCopyWithImpl<$Res> extends _$IssueModelCopyWithImpl<$Res>
     Object? open = freezed,
     Object? createdAt = freezed,
     Object? closedAt = freezed,
-    Object? closedByUserName = freezed,
   }) {
     return _then(_IssueModel(
       issueNumber: issueNumber == freezed
@@ -182,10 +171,6 @@ class __$IssueModelCopyWithImpl<$Res> extends _$IssueModelCopyWithImpl<$Res>
           ? _value.closedAt
           : closedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      closedByUserName: closedByUserName == freezed
-          ? _value.closedByUserName
-          : closedByUserName // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -199,8 +184,7 @@ class _$_IssueModel implements _IssueModel {
       required this.author,
       required this.open,
       required this.createdAt,
-      required this.closedAt,
-      required this.closedByUserName});
+      required this.closedAt});
 
   @override
   final int issueNumber;
@@ -214,12 +198,10 @@ class _$_IssueModel implements _IssueModel {
   final DateTime createdAt;
   @override
   final DateTime? closedAt;
-  @override
-  final String? closedByUserName;
 
   @override
   String toString() {
-    return 'IssueModel(issueNumber: $issueNumber, issueTitle: $issueTitle, author: $author, open: $open, createdAt: $createdAt, closedAt: $closedAt, closedByUserName: $closedByUserName)';
+    return 'IssueModel(issueNumber: $issueNumber, issueTitle: $issueTitle, author: $author, open: $open, createdAt: $createdAt, closedAt: $closedAt)';
   }
 
   @override
@@ -236,14 +218,12 @@ class _$_IssueModel implements _IssueModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.closedAt, closedAt) ||
-                other.closedAt == closedAt) &&
-            (identical(other.closedByUserName, closedByUserName) ||
-                other.closedByUserName == closedByUserName));
+                other.closedAt == closedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, issueNumber, issueTitle, author,
-      open, createdAt, closedAt, closedByUserName);
+  int get hashCode => Object.hash(
+      runtimeType, issueNumber, issueTitle, author, open, createdAt, closedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -258,8 +238,7 @@ abstract class _IssueModel implements IssueModel {
       required String author,
       required bool open,
       required DateTime createdAt,
-      required DateTime? closedAt,
-      required String? closedByUserName}) = _$_IssueModel;
+      required DateTime? closedAt}) = _$_IssueModel;
 
   @override
   int get issueNumber;
@@ -273,8 +252,6 @@ abstract class _IssueModel implements IssueModel {
   DateTime get createdAt;
   @override
   DateTime? get closedAt;
-  @override
-  String? get closedByUserName;
   @override
   @JsonKey(ignore: true)
   _$IssueModelCopyWith<_IssueModel> get copyWith =>

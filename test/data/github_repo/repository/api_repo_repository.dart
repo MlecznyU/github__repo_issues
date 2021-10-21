@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tech_challenge_flutter/data/github_repo/model/api_owner_model.dart';
 import 'package:tech_challenge_flutter/data/github_repo/model/api_repo_model.dart';
-import 'package:tech_challenge_flutter/data/github_repo/model/api_response_model.dart';
+import 'package:tech_challenge_flutter/data/github_repo/model/api_repo_response_model.dart';
 import 'package:tech_challenge_flutter/data/github_repo/repository/api_repo_repository.dart';
 import 'package:tech_challenge_flutter/data/utils.dart';
 import 'package:tech_challenge_flutter/domain/utils.dart';
@@ -35,7 +35,7 @@ void main() {
           repoName: name,
         ),
         //ignore: warning
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [], totalCount: 0)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [], totalCount: 0)));
       await build().getRepositoriesWithNumberOfPages(
         limit: limit,
         page: page,
@@ -67,7 +67,7 @@ void main() {
           sortType: sortType.toQueryPar(),
           repoName: name,
         ),
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [], totalCount: 200)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [], totalCount: 200)));
       // limit 20 totalCount 200
       final response = await build().getRepositoriesWithNumberOfPages(
         limit: 20,
@@ -86,7 +86,7 @@ void main() {
           sortType: sortType.toQueryPar(),
           repoName: name,
         ),
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [], totalCount: 5000)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [], totalCount: 5000)));
       // limit 10 totalCount 5000
       final response2 = await build().getRepositoriesWithNumberOfPages(
         page: page,
@@ -104,7 +104,7 @@ void main() {
           sortType: sortType.toQueryPar(),
           repoName: name,
         ),
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [], totalCount: 1)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [], totalCount: 1)));
       // limit 5 totalCount 1
       final response3 = await build().getRepositoriesWithNumberOfPages(
         limit: 5,
@@ -143,7 +143,7 @@ void main() {
           sortType: sortType.toQueryPar(),
           repoName: name,
         ),
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [], totalCount: 200)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [], totalCount: 200)));
       // limit 20 totalCount 200
       final response = await build().getRepositoriesWithNumberOfPages(
         limit: 20,
@@ -162,7 +162,7 @@ void main() {
           sortType: sortType.toQueryPar(),
           repoName: name,
         ),
-      ).thenAnswer((_) => Future.value(const ApiResponseModel(repoList: [apiModel, apiModel2], totalCount: 5000)));
+      ).thenAnswer((_) => Future.value(const ApiRepoResponseModel(repoList: [apiModel, apiModel2], totalCount: 5000)));
       // limit 10 totalCount 5000
       final response2 = await build().getRepositoriesWithNumberOfPages(
         page: page,

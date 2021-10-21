@@ -48,8 +48,10 @@ class ContentCard extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(width: 8),
-                                  Text(state.repoList[index].ownerName,
-                                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                                  Text(
+                                    state.repoList[index].ownerName,
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
                                   Text(' / ', style: TextStyle(color: Theme.of(context).disabledColor)),
                                   Flexible(
                                     child: Text(

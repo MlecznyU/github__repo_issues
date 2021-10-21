@@ -11,6 +11,5 @@ class IssueModel with _$IssueModel {
     required bool open,
     required DateTime createdAt,
     required DateTime? closedAt,
-    required String? closedByUserName,
   }) = _IssueModel;
 }

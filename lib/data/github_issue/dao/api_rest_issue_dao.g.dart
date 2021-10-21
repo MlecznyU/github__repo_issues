@@ -1,28 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_rest_repo_dao.dart';
+part of 'api_rest_issue_dao.dart';
 
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
-class _ApiRestRepoDao implements ApiRestRepoDao {
-  _ApiRestRepoDao(this._dio, {this.baseUrl});
+class _ApiRestIssueDao implements ApiRestIssueDao {
+  _ApiRestIssueDao(this._dio, {this.baseUrl});
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<ApiRepoResponseModel> getRepos(
-      {required repoName,
+  Future<ApiIssueResponseModel> getIssues(
+      {required repoFullName,
       required sortType,
       required sortDirection,
       required limit,
       required page}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'q': repoName,
+      r'q': repoFullName,
       r'sort': sortType,
       r'order': sortDirection,
       r'per_page': limit,
@@ -31,12 +31,12 @@ class _ApiRestRepoDao implements ApiRestRepoDao {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiRepoResponseModel>(
+        _setStreamType<ApiIssueResponseModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/search/repositories',
+                .compose(_dio.options, '/search/issues',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ApiRepoResponseModel.fromJson(_result.data!);
+    final value = ApiIssueResponseModel.fromJson(_result.data!);
     return value;
   }
 

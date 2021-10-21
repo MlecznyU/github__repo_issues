@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'api_response_model.dart';
+part of 'api_repo_response_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,33 +13,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ApiResponseModel _$ApiResponseModelFromJson(Map<String, dynamic> json) {
-  return _ApiResponseModel.fromJson(json);
+ApiRepoResponseModel _$ApiRepoResponseModelFromJson(Map<String, dynamic> json) {
+  return _ApiRepoResponseModell.fromJson(json);
 }
 
 /// @nodoc
-class _$ApiResponseModelTearOff {
-  const _$ApiResponseModelTearOff();
+class _$ApiRepoResponseModelTearOff {
+  const _$ApiRepoResponseModelTearOff();
 
-  _ApiResponseModel call(
+  _ApiRepoResponseModell call(
       {@JsonKey(name: 'total_count') required int totalCount,
       @JsonKey(name: 'items') required List<ApiRepoModel> repoList}) {
-    return _ApiResponseModel(
+    return _ApiRepoResponseModell(
       totalCount: totalCount,
       repoList: repoList,
     );
   }
 
-  ApiResponseModel fromJson(Map<String, Object?> json) {
-    return ApiResponseModel.fromJson(json);
+  ApiRepoResponseModel fromJson(Map<String, Object?> json) {
+    return ApiRepoResponseModel.fromJson(json);
   }
 }
 
 /// @nodoc
-const $ApiResponseModel = _$ApiResponseModelTearOff();
+const $ApiRepoResponseModel = _$ApiRepoResponseModelTearOff();
 
 /// @nodoc
-mixin _$ApiResponseModel {
+mixin _$ApiRepoResponseModel {
   @JsonKey(name: 'total_count')
   int get totalCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'items')
@@ -47,28 +47,28 @@ mixin _$ApiResponseModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ApiResponseModelCopyWith<ApiResponseModel> get copyWith =>
+  $ApiRepoResponseModelCopyWith<ApiRepoResponseModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApiResponseModelCopyWith<$Res> {
-  factory $ApiResponseModelCopyWith(
-          ApiResponseModel value, $Res Function(ApiResponseModel) then) =
-      _$ApiResponseModelCopyWithImpl<$Res>;
+abstract class $ApiRepoResponseModelCopyWith<$Res> {
+  factory $ApiRepoResponseModelCopyWith(ApiRepoResponseModel value,
+          $Res Function(ApiRepoResponseModel) then) =
+      _$ApiRepoResponseModelCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'total_count') int totalCount,
       @JsonKey(name: 'items') List<ApiRepoModel> repoList});
 }
 
 /// @nodoc
-class _$ApiResponseModelCopyWithImpl<$Res>
-    implements $ApiResponseModelCopyWith<$Res> {
-  _$ApiResponseModelCopyWithImpl(this._value, this._then);
+class _$ApiRepoResponseModelCopyWithImpl<$Res>
+    implements $ApiRepoResponseModelCopyWith<$Res> {
+  _$ApiRepoResponseModelCopyWithImpl(this._value, this._then);
 
-  final ApiResponseModel _value;
+  final ApiRepoResponseModel _value;
   // ignore: unused_field
-  final $Res Function(ApiResponseModel) _then;
+  final $Res Function(ApiRepoResponseModel) _then;
 
   @override
   $Res call({
@@ -89,11 +89,11 @@ class _$ApiResponseModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ApiResponseModelCopyWith<$Res>
-    implements $ApiResponseModelCopyWith<$Res> {
-  factory _$ApiResponseModelCopyWith(
-          _ApiResponseModel value, $Res Function(_ApiResponseModel) then) =
-      __$ApiResponseModelCopyWithImpl<$Res>;
+abstract class _$ApiRepoResponseModellCopyWith<$Res>
+    implements $ApiRepoResponseModelCopyWith<$Res> {
+  factory _$ApiRepoResponseModellCopyWith(_ApiRepoResponseModell value,
+          $Res Function(_ApiRepoResponseModell) then) =
+      __$ApiRepoResponseModellCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'total_count') int totalCount,
@@ -101,22 +101,22 @@ abstract class _$ApiResponseModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ApiResponseModelCopyWithImpl<$Res>
-    extends _$ApiResponseModelCopyWithImpl<$Res>
-    implements _$ApiResponseModelCopyWith<$Res> {
-  __$ApiResponseModelCopyWithImpl(
-      _ApiResponseModel _value, $Res Function(_ApiResponseModel) _then)
-      : super(_value, (v) => _then(v as _ApiResponseModel));
+class __$ApiRepoResponseModellCopyWithImpl<$Res>
+    extends _$ApiRepoResponseModelCopyWithImpl<$Res>
+    implements _$ApiRepoResponseModellCopyWith<$Res> {
+  __$ApiRepoResponseModellCopyWithImpl(_ApiRepoResponseModell _value,
+      $Res Function(_ApiRepoResponseModell) _then)
+      : super(_value, (v) => _then(v as _ApiRepoResponseModell));
 
   @override
-  _ApiResponseModel get _value => super._value as _ApiResponseModel;
+  _ApiRepoResponseModell get _value => super._value as _ApiRepoResponseModell;
 
   @override
   $Res call({
     Object? totalCount = freezed,
     Object? repoList = freezed,
   }) {
-    return _then(_ApiResponseModel(
+    return _then(_ApiRepoResponseModell(
       totalCount: totalCount == freezed
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
@@ -131,13 +131,13 @@ class __$ApiResponseModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiResponseModel implements _ApiResponseModel {
-  const _$_ApiResponseModel(
+class _$_ApiRepoResponseModell implements _ApiRepoResponseModell {
+  const _$_ApiRepoResponseModell(
       {@JsonKey(name: 'total_count') required this.totalCount,
       @JsonKey(name: 'items') required this.repoList});
 
-  factory _$_ApiResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiResponseModelFromJson(json);
+  factory _$_ApiRepoResponseModell.fromJson(Map<String, dynamic> json) =>
+      _$$_ApiRepoResponseModellFromJson(json);
 
   @override
   @JsonKey(name: 'total_count')
@@ -148,14 +148,14 @@ class _$_ApiResponseModel implements _ApiResponseModel {
 
   @override
   String toString() {
-    return 'ApiResponseModel(totalCount: $totalCount, repoList: $repoList)';
+    return 'ApiRepoResponseModel(totalCount: $totalCount, repoList: $repoList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ApiResponseModel &&
+            other is _ApiRepoResponseModell &&
             (identical(other.totalCount, totalCount) ||
                 other.totalCount == totalCount) &&
             const DeepCollectionEquality().equals(other.repoList, repoList));
@@ -167,23 +167,24 @@ class _$_ApiResponseModel implements _ApiResponseModel {
 
   @JsonKey(ignore: true)
   @override
-  _$ApiResponseModelCopyWith<_ApiResponseModel> get copyWith =>
-      __$ApiResponseModelCopyWithImpl<_ApiResponseModel>(this, _$identity);
+  _$ApiRepoResponseModellCopyWith<_ApiRepoResponseModell> get copyWith =>
+      __$ApiRepoResponseModellCopyWithImpl<_ApiRepoResponseModell>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiResponseModelToJson(this);
+    return _$$_ApiRepoResponseModellToJson(this);
   }
 }
 
-abstract class _ApiResponseModel implements ApiResponseModel {
-  const factory _ApiResponseModel(
+abstract class _ApiRepoResponseModell implements ApiRepoResponseModel {
+  const factory _ApiRepoResponseModell(
           {@JsonKey(name: 'total_count') required int totalCount,
           @JsonKey(name: 'items') required List<ApiRepoModel> repoList}) =
-      _$_ApiResponseModel;
+      _$_ApiRepoResponseModell;
 
-  factory _ApiResponseModel.fromJson(Map<String, dynamic> json) =
-      _$_ApiResponseModel.fromJson;
+  factory _ApiRepoResponseModell.fromJson(Map<String, dynamic> json) =
+      _$_ApiRepoResponseModell.fromJson;
 
   @override
   @JsonKey(name: 'total_count')
@@ -193,6 +194,6 @@ abstract class _ApiResponseModel implements ApiResponseModel {
   List<ApiRepoModel> get repoList;
   @override
   @JsonKey(ignore: true)
-  _$ApiResponseModelCopyWith<_ApiResponseModel> get copyWith =>
+  _$ApiRepoResponseModellCopyWith<_ApiRepoResponseModell> get copyWith =>
       throw _privateConstructorUsedError;
 }
