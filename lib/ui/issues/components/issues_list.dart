@@ -10,6 +10,7 @@ class IssuesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<IssueBloc, IssueState>(
       builder: (BuildContext context, IssueState state) {
+        // TODO: add handling of other states
         return Expanded(
           child: RefreshIndicator(
             onRefresh: () => context.read<IssueBloc>().refreshList(),

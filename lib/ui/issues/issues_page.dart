@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tech_challenge_flutter/ui/common_widgets/common_pagination.dart';
 import 'package:tech_challenge_flutter/ui/issues/components/issues_list.dart';
+import 'package:tech_challenge_flutter/ui/issues/issue_bloc.dart';
 
 class IssuesPage extends StatelessWidget {
   const IssuesPage({Key? key}) : super(key: key);
@@ -21,6 +24,16 @@ class IssuesPage extends StatelessWidget {
               ),
             ),
             const IssuesList(),
+            const SizedBox(height: 8),
+            BlocBuilder<IssueBloc, IssueState>(
+              builder: (BuildContext context, IssueState state) {
+                return CommonPagination(
+                  numberOfPages: state.numberOfPages,
+                  onPagePressed: (index) => context.read<IssueBloc>().getIssuesForPage(pageNumber: index),
+                  currentPage: state.currentPage,
+                );
+              },
+            ),
           ],
         ),
       ),
