@@ -24,7 +24,7 @@ class _SearchBarState extends State<SearchBar> {
       });
 
     _searchOnChange.debounceTime(const Duration(seconds: 1)).listen((String string) async {
-      await context.read<RepoBloc>().getRepositories(name: textController.text);
+      await context.read<RepoBloc>().getRepositories(name: textController.text, pageNumber: 1);
     });
     super.initState();
   }
