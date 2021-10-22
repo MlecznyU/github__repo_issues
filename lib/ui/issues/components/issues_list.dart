@@ -19,6 +19,17 @@ class IssuesList extends StatelessWidget {
           case StateType.loading:
             return const Expanded(child: Center(child: CircularProgressIndicator(color: Colors.white)));
           case StateType.loaded:
+            if (state.issuesList.isEmpty) {
+              return const Expanded(
+                child: Center(
+                  child: Text(
+                    'There are no open issues \nfor the selected repository',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              );
+            }
             return Expanded(
               child: RefreshIndicator(
                 onRefresh: () => context.read<IssueBloc>().refreshList(),
