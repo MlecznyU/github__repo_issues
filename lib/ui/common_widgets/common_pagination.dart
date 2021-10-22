@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 
 class CommonPagination extends StatefulWidget {
@@ -42,9 +44,10 @@ class _CommonPaginationState extends State<CommonPagination> {
         child: Row(
           children: [
             _SinglePage(
-              onPagePressed: (index) {
-                _scrollController.jumpTo(_scrollController.position.minScrollExtent);
-                widget.onPagePressed(index);
+              onPagePressed: (index) async {
+                await widget.onPagePressed(index);
+
+                _jumpTo(_scrollController.position.minScrollExtent);
               },
               currentPage: widget.currentPage,
               index: 1,
@@ -57,17 +60,19 @@ class _CommonPaginationState extends State<CommonPagination> {
                 itemBuilder: (BuildContext context, int index) {
                   if (index == 0 || index == 1 || index == widget.numberOfPages) return const SizedBox();
                   return _SinglePage(
-                      onPagePressed: widget.onPagePressed, currentPage: widget.currentPage, index: index);
+                    onPagePressed: widget.onPagePressed,
+                    currentPage: widget.currentPage,
+                    index: index,
+                  );
                 },
               ),
             ),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Text('  ...  ', style: TextStyle(color: Theme.of(context).disabledColor))),
+            const SizedBox(width: 8),
             _SinglePage(
               onPagePressed: (index) async {
-                _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-                widget.onPagePressed(index);
+                await widget.onPagePressed(index);
+
+                _jumpTo(_scrollController.position.maxScrollExtent);
               },
               currentPage: widget.currentPage,
               index: widget.numberOfPages,
@@ -76,6 +81,12 @@ class _CommonPaginationState extends State<CommonPagination> {
         ),
       ),
     );
+  }
+
+  void _jumpTo(double position) {
+    try {
+      Isolate.spawn((_) => _scrollController.jumpTo(_scrollController.position.maxScrollExtent), null);
+    } catch (e) {}
   }
 }
 

@@ -4,6 +4,7 @@ linter:
   rules:
     avoid_positional_boolean_parameters: false
     avoid_classes_with_only_static_members: false
+    empty_catches: false
 analyzer:
   exclude:
     - "**/*.g.dart"
